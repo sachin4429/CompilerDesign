@@ -1,0 +1,37 @@
+import java.util.Scanner;
+/**
+ * search
+ */
+public class search {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int x = in.nextInt();
+        if(binary(arr, x) == x)
+            System.out.println("Found");
+        else
+            System.out.println("Not Found");
+    }
+    public static int linear(int arr[], int x) 
+    {
+        for (int i = 0; i < arr.length; i++) {
+            if(arr[i] == x)
+                return x;
+        }
+        return -1;
+    }
+    public static int binary(int arr[], int x) {
+        int lo = 0;
+        int hi = arr.length-1;
+        while (hi >= lo) {
+            int mid = lo + (hi - lo)/2;
+            if(arr[mid] == x)
+                return x;
+            else if(arr[mid] > x)
+                hi = mid-1;
+            else lo = mid+1;
+        }
+        return -1;
+    }
+}
